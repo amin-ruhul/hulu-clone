@@ -1,8 +1,8 @@
-
 import React,{useState,useEffect} from 'react'
 import './content.css'
 import VideoCard from './VideoCard'
-import axios from '../axios'
+import axios from '../axios';
+import FlipMove from "react-flip-move";
 
 
 function Content({ selectedOption }) {
@@ -20,11 +20,11 @@ function Content({ selectedOption }) {
 
     return (
         <div className='content'>
-            {movies.map(movie =>(
-                <VideoCard key={movie.id} movie={movie}/>
-            ))}
-            
-           
+            <FlipMove>
+                {movies.map(movie =>(
+                    <VideoCard key={movie.id} movie={movie}/>
+                ))}
+            </FlipMove> 
         </div>
     )
 }
