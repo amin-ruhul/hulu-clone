@@ -1,13 +1,28 @@
 import React from 'react'
 import './videocard.css'
+import TextTruncate from 'react-text-truncate';
+import {ThumbUpSharp} from '@material-ui/icons';
 
-function VideoCard() {
+
+const base_url = "https://image.tmdb.org/t/p/original/";
+
+function VideoCard({ movie }) {
     return (
         <div className='video-card'>
-            <img src="https://image.tmdb.org/t/p/original//kMe4TKMDNXTKptQPAdOF0oZHq3V.jpg" alt=""/>
-            <p>This is movie about...</p>
-            <h3>Movie title</h3>
-            <p>Date and Like</p>
+            <img src={`${base_url}${movie.backdrop_path || movie.poster_path}`} alt="movie poster"/>
+            <TextTruncate
+                line={1}
+                element="p"
+                truncateText="..."
+                text={movie.overview}
+            />
+            <h3>{movie.title || movie.original_name}</h3>
+            <p className='video-card-stats'>
+            {movie.media_type && `${movie.media_type} .`}
+            {movie.release_date || movie.first_air_date} .
+            <ThumbUpSharp/>{' '}
+            {movie.vote_count}
+            </p>
         </div>
     )
 }

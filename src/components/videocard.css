@@ -21,3 +21,11 @@
 .video-card > h3{
     padding-top: 10px;
 }
+
+.video-card-stats{
+    display: none;
+}
+
+.video-card:hover > .video-card-stats{
+    display: inline;
+}
